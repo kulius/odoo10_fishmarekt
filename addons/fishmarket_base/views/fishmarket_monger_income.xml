@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="monger_income_action" model="ir.actions.act_window">
+            <field name="name">魚販入金扣帳作業</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fishmarket.monger.income</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+        <record id="monger_income_tree" model="ir.ui.view">
+            <field name="name">monger income t</field>
+            <field name="model">fishmarket.monger.income</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="write_date"/>
+                    <field name="monger_id"/>
+                    <field name="monger_name"/>
+                    <field name="monger_time"/>
+                    <field name="last_owe_money"/>
+                    <field name="record_money"/>
+                    <field name="total_owe_money"/>
+                </tree>
+            </field>
+        </record>
+        <record id="monger_income_form" model="ir.ui.view">
+            <field name="name">monger income</field>
+            <field name="model">fishmarket.monger.income</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group col="6">
+                            <field name="monger_id"/>
+                            <field name="monger_name"/>
+                            <field name="monger_time"/>
+                            <field name="last_owe_money"/>
+                            <field name="record_money"/>
+                            <field name="total_owe_money"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

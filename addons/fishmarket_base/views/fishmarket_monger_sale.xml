@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="monger_sale_action" model="ir.actions.act_window">
+        <field name="name">魚販買賣傳票輸入</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">fishmarket.monger.sale</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            <!-- Add Text Here -->
+          </p><p>
+            <!-- More details about what a user can do with this object will be OK -->
+          </p>
+        </field>
+    </record>
+        <record id="monger_sale_tree" model="ir.ui.view">
+            <field name="name">monger sale summoms t</field>
+            <field name="model">fishmarket.monger.sale</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="write_date"/>
+                    <field name="monger_name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="monger_sale_form" model="ir.ui.view">
+            <field name="name">monger sale summoms f</field>
+            <field name="model">fishmarket.monger.sale</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group col="4">
+                            <field name="total_order"/>
+                            <field name="fish_come"/>
+                        </group>
+                        <group col="6">
+                            <field name="monger_id" string="販名"/>
+                            <field name="monger_name" nolabel="1"/>
+                            <field name="fish_id" string="魚名"/>
+                            <field name="fish_name" nolabel="1"/>
+                        </group>
+                        <group col="4">
+                            <field name="monger_order"/>
+                            <field name="cage"/>
+                            <field name="buy_weight"/>
+                            <field name="sell_weight"/>
+                            <field name="buy_dollar"/>
+                            <field name="sell_dollar"/>
+                            <field name="buy_total"/>
+                            <field name="sell_total"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

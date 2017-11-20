@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="base_base_action" model="ir.actions.act_window">
+        <field name="name">基本資料</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">fishmarket.base</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            <!-- Add Text Here -->
+          </p><p>
+            <!-- More details about what a user can do with this object will be OK -->
+          </p>
+        </field>
+    </record>
+        <record id="base_base_tree" model="ir.ui.view">
+            <field name="name">base base tree</field>
+            <field name="model">fishmarket.base</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="cage_deposit_amount"/>
+                    <field name="summons_amount"/>
+                    <field name="sales_profit"/>
+                </tree>
+            </field>
+        </record>
+        <record id="base_base_form" model="ir.ui.view">
+            <field name="name">base base form</field>
+            <field name="model">fishmarket.base</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="cage_deposit_amount"/>
+                            <field name="summons_amount"/>
+                            <field name="sales_profit"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
