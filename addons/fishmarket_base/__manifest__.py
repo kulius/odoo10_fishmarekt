@@ -9,12 +9,23 @@
         魚市場基本資料
     """,
     'data': [
+        # 'views/test_wizard123.xml',
+        'views/fishmarket_monger_income_print.xml',
+        'views/fishmarket_monger_print.xml',
+        'views/fishmarket_fish_print.xml',
+        'views/fishmarket_summoms_statistic.xml',
+        'views/fishmarket_fishcoming.xml',
         'views/fishmarket_monger_sale.xml',
         'views/fishmarket_monger_income.xml',
+        'views/fishmarket_monger_debt.xml',
         'views/fishmarket_fish_base.xml',
         'views/fishmarket_monger_base.xml',
         'views/fishmarket_base_base.xml',
         'views/fishmarket_menu.xml',
+
+        'report/monger_report.xml',
+        'report/fish_report.xml',
+        'report/monger_income_report.xml',
     ],
     'demo': [],
 }

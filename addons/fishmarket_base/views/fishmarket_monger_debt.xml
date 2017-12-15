@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="monger_debt_action" model="ir.actions.act_window">
+        <field name="name">魚販欠款檔</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">monger.debt</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            <!-- Add Text Here -->
+          </p><p>
+            <!-- More details about what a user can do with this object will be OK -->
+          </p>
+        </field>
+    </record>
+        <record id="monger_debt_tree" model="ir.ui.view">
+            <field name="name">monger debt t</field>
+            <field name="model">monger.debt</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="debt_amount"/>
+                </tree>
+            </field>
+        </record>
+        <record id="monger_debt_form" model="ir.ui.view">
+            <field name="name">monger debt f</field>
+            <field name="model">monger.debt</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="date"/>
+                            <field name="debt_amount"/>
+                            <!--<field name="debt_order"/>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

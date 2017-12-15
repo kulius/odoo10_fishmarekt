@@ -2,7 +2,7 @@
 <odoo>
     <data>
     <record id="monger_base_action" model="ir.actions.act_window">
-        <field name="name">魚販基本資料</field>
+        <field name="name">魚販基本資料 建檔</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">fishmarket.monger</field>
         <field name="view_mode">tree,form</field>
@@ -19,11 +19,14 @@
             <field name="model">fishmarket.monger</field>
             <field name="arch" type="xml">
                 <tree string="">
-                    <field name="monger_id"/>
-                    <field name="monger_name"/>
-                    <field name="monger_print"/>
-                    <field name="debt_date"/>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="belongs"/>
+                    <field name="ps"/>
+                    <!--<field name="debt_date"/>-->
                     <field name="debt_amount"/>
+                    <field name="after_amount"/>
+                    <field name="print1"/>
                     <!--<field name="monger_create"/>-->
                 </tree>
             </field>
@@ -35,15 +38,28 @@
                 <form string="">
                     <sheet>
                         <group col="4">
-                            <field name="monger_id"/>
-                            <field name="monger_name"/>
-                            <field name="monger_print"/>
-                            <field name="debt_date"/>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="belongs"/>
+                            <field name="ps"/>
+                            <!--<field name="debt_date"/>-->
                             <field name="debt_amount"/>
+                            <field name="after_amount"/>
+                            <field name="print1"/>
                             <!--<field name="monger_create"/>-->
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+        <record id="fishmarket_monger_search" model="ir.ui.view">
+            <field name="name">fishmarrket monger s</field>
+            <field name="model">fishmarket.monger</field>
+            <field name="arch" type="xml">
+                <search>
+                     <field name="code"/>
+                     <field name="name"/>
+                </search>
             </field>
         </record>
     </data>

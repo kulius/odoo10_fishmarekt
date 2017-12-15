@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <record id="monger_sale_search" model="ir.ui.view">
+            <field name="name">monger sale s</field>
+            <field name="model">fishmarket.monger.sale</field>
+            <field name="arch" type="xml">
+                <search>
+                    <filter string="已過帳" name="check_status" domain="[('now_status', '=',2)]"/>
+                </search>
+            </field>
+        </record>
     <record id="monger_sale_action" model="ir.actions.act_window">
         <field name="name">魚販買賣傳票輸入</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">fishmarket.monger.sale</field>
         <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_check_status': 1}</field>
         <field name="help" type="html">
-          <p class="oe_view_nocontent_create">
+            <p class="oe_view_nocontent_create">
             <!-- Add Text Here -->
           </p><p>
             <!-- More details about what a user can do with this object will be OK -->
@@ -19,8 +29,13 @@
             <field name="model">fishmarket.monger.sale</field>
             <field name="arch" type="xml">
                 <tree string="">
-                    <field name="write_date"/>
+                    <field name="now_status"/>
+                    <field name="write_date" string="交易日期"/>
+                    <field name="order"/>   <!--單號-->
                     <field name="monger_name"/>
+                    <field name="sell_weight"/>
+                    <field name="sell_dollar"/>
+                    <field name="sell_total"/>
                 </tree>
             </field>
         </record>
@@ -29,26 +44,35 @@
             <field name="model">fishmarket.monger.sale</field>
             <field name="arch" type="xml">
                 <form string="">
+                    <header>
+                        <field name="now_status" widget="statusbar" statusbar_visible="1,2" clickable="True"/>
+                    </header>
                     <sheet>
                         <group col="4">
-                            <field name="total_order"/>
+                            <field name="order"/>
                             <field name="fish_come"/>
                         </group>
-                        <group col="6">
-                            <field name="monger_id" string="販名"/>
-                            <field name="monger_name" nolabel="1"/>
-                            <field name="fish_id" string="魚名"/>
-                            <field name="fish_name" nolabel="1"/>
+                        <group col="4">
+                            <field name="monger_name"/>
+                            <field name="fish_name"/>
                         </group>
                         <group col="4">
                             <field name="monger_order"/>
                             <field name="cage"/>
+                            <field name="count_bonus"/>
+                            <field name="division"/>
+                        </group>
+                        <group col="6">
                             <field name="buy_weight"/>
-                            <field name="sell_weight"/>
                             <field name="buy_dollar"/>
-                            <field name="sell_dollar"/>
                             <field name="buy_total"/>
+                            <field name="sell_weight"/>
+                            <field name="sell_dollar"/>
                             <field name="sell_total"/>
+                        </group>
+                        <group col="4">
+                            <!--<field name="total_buy"/>-->
+                            <!--<field name="total_sell"/>-->
                         </group>
                     </sheet>
                 </form>

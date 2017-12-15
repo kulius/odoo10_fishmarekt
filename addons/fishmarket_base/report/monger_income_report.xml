@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- string:是报表在菜单上的文字。 -->
+<!-- name:要写template的xmlid，8版本不能省略模块名。9待实验。 -->
+        <report id="monger_income_report"
+                model="fishmarket.monger.income"
+                string="入金明細表列印"
+                report_type="qweb-pdf"
+                name="fishmarket_base.monger_income_template"
+            />
+        <template id="monger_income_template">
+                <t t-call="report.html_container">
+                    <t t-call="report.internal_layout">
+                        <div class="page">
+                            <h2>入金明細表列印</h2>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <div style="font-family: Inconsolata; font-size: 1.6em; line-height:18px;">
+                                        <th>入金日期</th>
+                                        <th>代號</th>
+                                        <th>魚販名稱</th>
+                                        <th>次</th>
+                                        <th>前欠金額</th>
+                                        <th>入金金額</th>
+                                        <th>餘欠金額</th>
+                                    </div>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="docs" t-as="g">
+                                        <tr>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.income_date"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.monger_id"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.monger_name.name"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.monger_time"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.last_owe_money"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.record_money"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.total_owe_money"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+        </template>
+    </data>
+</odoo>

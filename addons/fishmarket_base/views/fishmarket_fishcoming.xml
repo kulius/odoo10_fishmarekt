@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-    <record id="base_base_action" model="ir.actions.act_window">
-        <field name="name">基本係數 設定</field>
+    <record id="fishcoming_action" model="ir.actions.act_window">
+        <field name="name">魚貨來源</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">fishmarket.base</field>
+        <field name="res_model">where.fish</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
           <p class="oe_view_nocontent_create">
@@ -14,27 +14,23 @@
           </p>
         </field>
     </record>
-        <record id="base_base_tree" model="ir.ui.view">
-            <field name="name">base base tree</field>
-            <field name="model">fishmarket.base</field>
+        <record id="fishcoming_tree" model="ir.ui.view">
+            <field name="name">fishcoming t</field>
+            <field name="model">where.fish</field>
             <field name="arch" type="xml">
                 <tree string="">
-                    <field name="cage_deposit_amount"/>
-                    <field name="summons_amount"/>
-                    <field name="sales_profit"/>
+                    <field name="name"/>
                 </tree>
             </field>
         </record>
-        <record id="base_base_form" model="ir.ui.view">
-            <field name="name">base base form</field>
-            <field name="model">fishmarket.base</field>
+        <record id="fishcoming_form" model="ir.ui.view">
+            <field name="name">fishcoming f</field>
+            <field name="model">where.fish</field>
             <field name="arch" type="xml">
                 <form string="">
                     <sheet>
                         <group>
-                            <field name="cage_deposit_amount"/>
-                            <field name="summons_amount"/>
-                            <field name="sales_profit"/>
+                            <field name="name"/>
                         </group>
                     </sheet>
                 </form>

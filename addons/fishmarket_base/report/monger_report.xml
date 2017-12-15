@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- string:是报表在菜单上的文字。 -->
+<!-- name:要写template的xmlid，8版本不能省略模块名。9待实验。 -->
+        <report id="monger_report"
+                model="fishmarket.monger"
+                string="魚販基本資料列印"
+                report_type="qweb-pdf"
+                name="fishmarket_base.monger_template"
+            />
+        <template id="monger_template">
+                <t t-call="report.html_container">
+                    <t t-call="report.internal_layout">
+                        <div class="page">
+                            <h2>魚販基本資料列印</h2>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <div style="font-family: Inconsolata; font-size: 1.6em; line-height:18px;">
+                                        <th>魚販代號</th>
+                                        <th>魚販名稱</th>
+                                        <th>屬</th>
+                                        <th>備註</th>
+                                        <th>總欠金額</th>
+                                        <th>還錢後金額</th>
+                                    </div>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="docs" t-as="g">
+                                        <tr>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.code"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.name"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.belongs"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.ps"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.debt_amount"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.after_amount"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+        </template>
+    </data>
+</odoo>

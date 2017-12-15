@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="summoms_statistic_action" model="ir.actions.act_window">
+        <field name="name">傳票統計資料查詢</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">fish.coming</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('summoms_statisitc_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('summoms_statisic_form')}),
+            ]"/>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            <!-- Add Text Here -->
+          </p><p>
+            <!-- More details about what a user can do with this object will be OK -->
+          </p>
+        </field>
+    </record>
+        <record id="summoms_statisitc_tree" model="ir.ui.view">
+            <field name="name">summoms statisitc t</field>
+            <field name="model">fish.coming</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="write_date"/>
+                    <!--<field name="relation"/>-->
+                    <field name="name"/>
+                    <field name="order"/>
+                    <field name="cage"/>
+                    <field name="weight_total"/>
+                    <field name="buy_total"/>
+                    <field name="sell_total"/>
+                    <field name="surplus"/>
+                    <!--<field name="loss"/>-->
+                </tree>
+            </field>
+        </record>
+        <record id="summoms_statisic_form" model="ir.ui.view">
+            <field name="name">summoms statistic form</field>
+            <field name="model">fish.coming</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="relation" string="傳票分配"/>
+                        </group>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="order"/>
+                            <field name="cage"/>
+                            <field name="weight_total"/>
+                        </group>
+                        <group col="6">
+                            <field name="buy_total"/>
+                            <field name="sell_total"/>
+                            <field name="surplus"/>
+                            <!--<field name="loss"/>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

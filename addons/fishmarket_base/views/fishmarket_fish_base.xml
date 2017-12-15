@@ -2,10 +2,14 @@
 <odoo>
     <data>
     <record id="fish_base_action" model="ir.actions.act_window">
-        <field name="name">魚種基本資料</field>
+        <field name="name">魚名基本資料 建檔</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">fishmarket.fish</field>
         <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('fish_base_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('fish_base_form')}),
+            ]"/>
         <field name="help" type="html">
           <p class="oe_view_nocontent_create">
             <!-- Add Text Here -->
@@ -19,9 +23,9 @@
             <field name="model">fishmarket.fish</field>
             <field name="arch" type="xml">
                 <tree string="">
-                    <field name="fish_id"/>
-                    <field name="fish_name"/>
-                    <field name="fish_ps"/>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="ps"/>
                     <!--<field name="fish_create"/>-->
                 </tree>
             </field>
@@ -33,13 +37,23 @@
                 <form string="">
                     <sheet>
                         <group col="4">
-                            <field name="fish_id"/>
-                            <field name="fish_name"/>
+                            <field name="code"/>
+                            <field name="name"/>
                             <!--<field name="fish_create"/>-->
-                            <field name="fish_ps"/>
+                            <field name="ps"/>
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+        <record id="fishmarket_fish_search" model="ir.ui.view">
+            <field name="name">fishmarrket fish s</field>
+            <field name="model">fishmarket.fish</field>
+            <field name="arch" type="xml">
+                <search>
+                     <field name="code"/>
+                     <field name="name"/>
+                </search>
             </field>
         </record>
     </data>

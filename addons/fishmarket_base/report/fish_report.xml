@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- string:是报表在菜单上的文字。 -->
+<!-- name:要写template的xmlid，8版本不能省略模块名。9待实验。 -->
+        <report id="fish_report"
+                model="fishmarket.fish"
+                string="魚名代號列表"
+                report_type="qweb-pdf"
+                name="fishmarket_base.fish_template"
+            />
+        <template id="fish_template">
+                <t t-call="report.html_container">
+                    <t t-call="report.internal_layout">
+                        <div class="page">
+                            <h2>魚名代號列印</h2>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <div style="font-family: Inconsolata; font-size: 1.6em; line-height:18px;">
+                                        <th>代號</th>
+                                        <th>魚種名稱</th>
+                                        <th>備註</th>
+                                    </div>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="docs" t-as="g">
+                                        <tr>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.code"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.name"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <t t-esc="g.ps"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+        </template>
+    </data>
+</odoo>

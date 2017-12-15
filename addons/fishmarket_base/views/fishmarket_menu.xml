@@ -1,31 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-    <menuitem id="fish_market_root" name="承銷人管理系統" sequence="1"/>
-        <menuitem id="fish_base"
-                  name="魚種基本資料"
+        <record id="fishmarket_undo_action" model="ir.actions.act_window">
+            <field name="name">未完成</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">undo.action</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+        <record id="fishmarket_do_action" model="ir.actions.act_window">
+            <field name="name">已完成</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">do.action</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+    <menuitem id="fish_market_root" name="基本資料建檔" sequence="1"/>
+        <menuitem id="base_data"
+                  name="基本資料"
                   parent="fish_market_root"
+                  action=""
+                  sequence="1"/>
+        <menuitem id="fish_base"
+                  name="魚名代號建檔 建檔"
+                  parent="base_data"
                   action="fish_base_action"
                   sequence="1"/>
         <menuitem id="monger_base"
-                  name="魚販基本資料"
-                  parent="fish_market_root"
+                  name="魚販基本資料 建檔"
+                  parent="base_data"
                   action="monger_base_action"
                   sequence="2"/>
         <menuitem id="base_base"
-                  name="基本資料"
-                  parent="fish_market_root"
+                  name="基本係數"
+                  parent="base_data"
                   action="base_base_action"
                   sequence="3"/>
-        <menuitem id="monger_income"
-                  name="魚販入金扣帳管理作業"
-                  parent="fish_market_root"
-                  action="monger_income_action"
+        <menuitem id="fish_code_print"
+                  name="魚名代號對照表 列印"
+                  parent="base_data"
+                  action="fish_print_action"
                   sequence="4"/>
-        <menuitem id="monger_sale_summoms"
+        <!--<menuitem id="monger_code_print"-->
+                  <!--name="魚販代號對照表 列印"-->
+                  <!--parent="fish_market_root"-->
+                  <!--action="monger_print_action"-->
+                  <!--sequence="5"/>-->
+        <menuitem id="monger_base_print"
+                  name="魚販基本資料 列印"
+                  parent="base_data"
+                  action="monger_print_action"
+                  sequence="6"/>
+        <menuitem id="fish_coming_test"
+                  name="魚種來源 設定"
+                  parent="base_data"
+                  action="fishcoming_action"
+                  sequence="7"/>
+        <menuitem id="monger_debt"
+                  name="魚販欠款檔"
+                  parent="base_data"
+                  action="monger_debt_action"
+                  sequence="8"/>
+        <menuitem id="monger_daily_debt_root" name="魚販每日帳務處理" sequence="2"/>
+        <menuitem id="daily_debt"
+                  name="每日帳務處理"
+                  parent="monger_daily_debt_root"
+                  action=""
+                  sequence="1"/>
+        <menuitem id="monger_income_input"
+                  name="魚販入金資料輸入"
+                  parent="daily_debt"
+                  action="monger_income_action"
+                  sequence="1"/>
+        <menuitem id="income_print"
+                  name="入金明細表 列印(入金資料)"
+                  parent="daily_debt"
+                  action="monger_income_print"
+                  sequence="2"/>
+        <menuitem id="monger_summoms_input"
                   name="魚販買賣傳票輸入"
-                  parent="fish_market_root"
+                  parent="daily_debt"
                   action="monger_sale_action"
+                  sequence="3"/>
+        <menuitem id="summoms_statisic_searching"
+                  name="傳票統計資料查詢"
+                  parent="daily_debt"
+                  action="summoms_statistic_action"
+                  sequence="4"/>
+        <menuitem id="summoms_base"
+                  name="傳票明細表"
+                  parent="daily_debt"
+                  action="fishmarket_undo_action"
                   sequence="5"/>
+        <menuitem id="monger_checkingorder_print"
+                  name="魚販對帳單 列印"
+                  parent="daily_debt"
+                  action="fishmarket_undo_action"
+                  sequence="6"/>
+        <menuitem id="monger_debt_counting"
+                  name="魚販欠款資料 過帳"
+                  parent="daily_debt"
+                  action="fishmarket_undo_action"
+                  sequence="7"/>
+        <menuitem id="monger_arrearsbook_print"
+                  name="魚販欠款簿 列印"
+                  parent="daily_debt"
+                  action="fishmarket_undo_action"
+                  sequence="8"/>
+        <menuitem id="monger_history_searching_root" name="魚販舊帳查詢與列印" sequence="3"/>
+        <menuitem id="old_search_print"
+                  name="舊帳查詢與列印"
+                  parent="monger_history_searching_root"
+                  action=""
+                  sequence="1"/>
+        <menuitem id="monger_olddata_searching"
+                  name="魚販舊帳資料查詢"
+                  parent="old_search_print"
+                  action="fishmarket_undo_action"
+                  sequence="1"/>
+        <menuitem id="monger_olddata_print"
+                  name="魚販舊帳資料列印"
+                  parent="old_search_print"
+                  action="fishmarket_undo_action"
+                  sequence="2"/>
+
     </data>
 </odoo>

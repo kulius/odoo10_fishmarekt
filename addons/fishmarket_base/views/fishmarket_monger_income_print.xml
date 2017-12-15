@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <act_window id="monger_income_print" name="魚販入金列印" res_model="monger.income.print.wizard"
+                    view_mode="form" target="new" multi="False"/>
+        <record id="monger_income_wizard_form" model="ir.ui.view">
+            <field name="name">monger income wizard f</field>
+            <field name="model">monger.income.print.wizard</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <h1>魚販入金列印</h1>
+                        <group>
+                            <field name="relation"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button type="object" name="setincomewizard" string="列印" class="oe_highlight"/>
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
