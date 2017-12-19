@@ -24,7 +24,6 @@ class MongerIncome(models.Model):
             self.monger_id = self.monger_name.code
             self.last_owe_money = self.monger_name.debt_amount
 
-
 class MongerIncomePrintWizard(models.Model):
 
     _name = 'monger.income.print.wizard'

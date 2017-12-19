@@ -6,7 +6,8 @@
             <field name="model">fishmarket.monger.sale</field>
             <field name="arch" type="xml">
                 <search>
-                    <filter string="已過帳" name="check_status" domain="[('now_status', '=',2)]"/>
+                    <filter string="未過帳" name="check_status" domain="[('now_status', '=',1)]"/>
+                    <!--<field name="monger_name"/>-->
                 </search>
             </field>
         </record>
@@ -29,9 +30,10 @@
             <field name="model">fishmarket.monger.sale</field>
             <field name="arch" type="xml">
                 <tree string="">
-                    <field name="now_status"/>
                     <field name="write_date" string="交易日期"/>
+                    <field name="now_status"/>
                     <field name="order"/>   <!--單號-->
+                    <field name="fish_come"/>
                     <field name="monger_name"/>
                     <field name="sell_weight"/>
                     <field name="sell_dollar"/>

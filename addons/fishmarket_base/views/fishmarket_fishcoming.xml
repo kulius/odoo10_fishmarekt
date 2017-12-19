@@ -14,15 +14,54 @@
           </p>
         </field>
     </record>
-        <record id="fishcoming_tree" model="ir.ui.view">
-            <field name="name">fishcoming t</field>
-            <field name="model">where.fish</field>
+        <record id="fish_coming_tree" model="ir.ui.view">
+            <field name="name">fish coming tree</field>
+            <field name="model">fish.coming</field>
             <field name="arch" type="xml">
                 <tree string="">
                     <field name="name"/>
                 </tree>
             </field>
         </record>
+        <record id="fish_coming_tree" model="ir.ui.view">
+        <field name="name">fish.coming.kanban.view</field>
+              <field name="model">fish.coming</field>
+              <field name="arch" type="xml">
+                  <kanban>
+                      <field name="name"/>
+                      <templates>
+                          <t t-name="kanban-box">
+                                  <div class="o_kanban_card_header">
+                                    <div class="o_kanban_card_header_title">
+                                        <div class="o_primary">
+                                            <strong>
+                                                <field name="name"/>
+                                            </strong>
+                                        </div>
+                                        <div class="o_secondary">
+                                            <!--<field name="scrum_team_id"/>-->
+                                        </div>
+                                    </div>
+                                  </div>
+                                  <div class="o_kanban_card_content">
+                                      <div class="text-muted">
+                                          <!--<span>開始時間</span>-->
+                                        <!--<field name="start_date"/>-->
+                                      <!--</div>-->
+                                      <!--<div class="text-muted">-->
+                                          <!--<div>-->
+                                              <!--<span>結束時間</span>-->
+                                              <!--<strong>-->
+                                                  <!--<field name="end_date"/>-->
+                                              <!--</strong>-->
+                                          <!--</div>-->
+                                      </div>
+                                  </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+         </record>
         <record id="fishcoming_form" model="ir.ui.view">
             <field name="name">fishcoming f</field>
             <field name="model">where.fish</field>

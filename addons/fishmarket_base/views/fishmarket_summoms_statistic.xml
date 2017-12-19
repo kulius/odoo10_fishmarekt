@@ -5,7 +5,7 @@
         <field name="name">傳票統計資料查詢</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">fish.coming</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
         <field name="view_ids" eval="[(5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('summoms_statisitc_tree')}),
             (0, 0, {'view_mode': 'form', 'view_id': ref('summoms_statisic_form')}),
@@ -61,5 +61,45 @@
                 </form>
             </field>
         </record>
+        <record id="summoms_statistic_kanban_view" model="ir.ui.view">
+            <field name="name">fish.coming.kanban.view</field>
+              <field name="model">fish.coming</field>
+              <field name="arch" type="xml">
+                  <kanban>
+                      <field name="name"/>
+                      <templates>
+                          <t t-name="kanban-box">
+                                  <div class="o_kanban_card_header">
+                                    <div class="o_kanban_card_header_title">
+                                        <div class="o_primary">
+                                            <strong>
+                                                     <field name="write_date"/>
+                                            </strong>
+                                        </div>
+                                        <div class="o_secondary">
+                                            <field name="name"/>
+                                            <!--<field name="scrum_team_id"/>-->
+                                        </div>
+                                        <div>
+                                            <strong>
+                                                <span>賣總價</span>
+                                                <span>-</span>
+                                                 <span>買總價</span>
+                                                <span>=</span>
+                                                <span>盈餘</span>
+                                            </strong>
+                                        </div>
+                                        <div>
+                                            <field name="sell_total"/>
+                                             <field name="buy_total"/>
+                                            <field name="surplus"/>
+                                        </div>
+                                    </div>
+                                  </div>
+                            </t>
+                    </templates>
+                </kanban>
+            </field>
+         </record>
     </data>
 </odoo>

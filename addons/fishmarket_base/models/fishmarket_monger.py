@@ -17,21 +17,31 @@ class MongerBase(models.Model):
     monger_debt = fields.One2many(comodel_name='monger.debt',inverse_name='name',string='欠錢不還')
     monger_income = fields.One2many(comodel_name='fishmarket.monger.income',inverse_name='monger_name',string='還錢棒棒')
 
+    @api.model
+    def name_search(self, name='', args=None, operator='ilike', limit=100):
+        args = args or []
+        domain = []
+        if name:
+            domain = ['|', ('name', operator, name), ('code', operator, name)]
+        banks = self.search(domain + args, limit=limit)
+        return banks.name_get()
+
     @api.depends('monger_debt')
     def setdebtamount(self):
         for row in self:
             for line in row.monger_debt:
                     row.debt_amount += line.debt_amount
             #line.debt_amount = line.monger_debt.name.total_owe_money
-    @api.depends('monger_income')
+
+    @api.depends('debt_amount')
     def setmoney(self):
-        income_total = 0
+        for line in self:
+            line.after_amount = line.debt_amount
         for row in self:
-                row.after_amount = row.debt_amount
-        for row in self:
+            income_total = 0
             for line in row.monger_income:
                 income_total += line.record_money
-                row.after_amount = row.debt_amount - income_total
+                row.after_amount -= income_total
 
 
 class MongerPrintWizard(models.Model):

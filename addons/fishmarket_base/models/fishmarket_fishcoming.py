@@ -10,9 +10,9 @@ class FishComing(models.Model):
     name = fields.Many2one(comodel_name='where.fish',string='魚貨來源')
     order = fields.Integer(string='件', store = True)
     cage = fields.Integer(string='籠')
-    weight_total = fields.Float(string='總重量')
-    buy_total = fields.Integer(string='買總價', compute = 'compute_buy_total',store=True)
-    sell_total = fields.Integer(string='賣總價',compute = 'compute_sell_total',store=True)
+    weight_total = fields.Float(string='總重量',compute = 'compute_total_weight' ,store = True)
+    buy_total = fields.Integer(string='買總價', compute = 'compute_buy_total',store = True)
+    sell_total = fields.Integer(string='賣總價',compute = 'compute_sell_total',store = True)
     surplus = fields.Integer(string='盈餘', compute='setsurplus' , store=True)
     # loss = fields.Float(string='虧損')
 
@@ -43,6 +43,12 @@ class FishComing(models.Model):
         for row in self:
             for line in row.relation:
                 row.buy_total += line.buy_total
+
+    @api.depends('relation.sell_weight')
+    def compute_total_weight(self):
+        for row in self:
+            for line in row.relation:
+                row.weight_total += line.sell_weight
 
 
                     #

@@ -9,6 +9,16 @@ class FishBase(models.Model):
     name = fields.Char(string='魚種名稱')
     ps = fields.Text(string='備註')
 
+    @api.model
+    def name_search(self, name='', args=None, operator='ilike', limit=100):
+        args = args or []
+        domain = []
+        if name:
+            domain = ['|', ('name', operator, name), ('code', operator, name)]
+        banks = self.search(domain + args, limit=limit)
+        return banks.name_get()
+
+
 
 class FishPrintWizard(models.Model):
     _name = 'fish.print.wizard'
