@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="fishmarket_setting_action" model="ir.actions.act_window">
+            <field name="name">請先設置作業時間</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fishmarket.set</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+        <record id="fishmarket_setting_tree" model="ir.ui.view">
+            <field name="name">setting t</field>
+            <field name="model">fishmarket.set</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="working_date"/>
+                </tree>
+            </field>
+        </record>
+        <record id="fishmarket_setting_form" model="ir.ui.view">
+            <field name="name">setting f</field>
+            <field name="model">fishmarket.set</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="working_date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--<act_window id="setting_wizard" name="設置" res_model="fishmarket.set"-->
+                    <!--view_mode="form" target="new" multi="False"/>-->
+
+        <!--<record id="setting_wizard_form" model="ir.ui.view">-->
+            <!--<field name="name">設置</field>-->
+            <!--<field name="model">fishmarket.set</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<form string="">-->
+                    <!--<sheet>-->
+                        <!--<h1>確認作業日期</h1>-->
+                        <!--<group>-->
+                            <!--<group>-->
+                                <!--<field name="working_date"/>-->
+                            <!--</group>-->
+                        <!--</group>-->
+                    <!--</sheet>-->
+                    <!--<footer>-->
+                        <!--<button type="object" name="" string="確定進入" class="oe_highlight"/>-->
+                        <!--<button special="cancel" string="Cancel"/>-->
+                    <!--</footer>-->
+                <!--</form>-->
+            <!--</field>-->
+        <!--</record>-->
+    </data>
+</odoo>

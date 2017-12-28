@@ -2,13 +2,22 @@
 <odoo>
 
     <!--報表的總欠金額還沒拔掉-->
-
     <data>
+        <record id="monger_income_search" model="ir.ui.view">
+            <field name="name">monger income s</field>
+            <field name="model">fishmarket.monger.income</field>
+            <field name="arch" type="xml">
+                <search>
+                    <filter string="未過帳" name="check_status" domain="[('now_status', '=',1)]"/>
+                </search>
+            </field>
+        </record>
         <record id="monger_income_action" model="ir.actions.act_window">
             <field name="name">魚販入金扣帳作業</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">fishmarket.monger.income</field>
             <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_check_status': 1}</field>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
                 <!-- Add Text Here -->
@@ -23,6 +32,7 @@
             <field name="arch" type="xml">
                 <tree string="">
                     <field name="income_date"/>
+                    <field name="now_status"/>
                     <field name="monger_id"/>
                     <field name="monger_name"/>
                     <field name="monger_time"/>
@@ -37,14 +47,19 @@
             <field name="model">fishmarket.monger.income</field>
             <field name="arch" type="xml">
                 <form string="">
+                    <header>
+                        <field name="now_status" widget="statusbar" statusbar_visible="1,2" clickable="True"/>
+                    </header>
                     <sheet>
-                        <group col="4">
-                            <field name="income_date"/>
+                       <group>
+                           <field name="income_date"/>
+                       </group>
+                         <group col="4">
                             <field name="monger_id"/>
                             <field name="monger_name"/>
                             <field name="monger_time"/>
                         </group>
-                        <group col="6">
+                        <group col="4">
                             <field name="last_owe_money"/>
                             <field name="record_money"/>
                             <!--<field name="total_owe_money"/>-->

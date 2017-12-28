@@ -28,31 +28,37 @@
             </field>
         </record>
     <menuitem id="fish_market_root" name="基本資料建檔" sequence="1"/>
+
         <menuitem id="base_data"
                   name="基本資料"
                   parent="fish_market_root"
                   action=""
                   sequence="1"/>
+        <menuitem id="setting"
+                  name="設置"
+                  parent="base_data"
+                  action="fishmarket_setting_action"
+                  sequence="1"/>
         <menuitem id="fish_base"
                   name="魚名代號建檔 建檔"
                   parent="base_data"
                   action="fish_base_action"
-                  sequence="1"/>
+                  sequence="2"/>
         <menuitem id="monger_base"
                   name="魚販基本資料 建檔"
                   parent="base_data"
                   action="monger_base_action"
-                  sequence="2"/>
+                  sequence="3"/>
         <menuitem id="base_base"
                   name="基本係數"
                   parent="base_data"
                   action="base_base_action"
-                  sequence="3"/>
+                  sequence="4"/>
         <menuitem id="fish_code_print"
                   name="魚名代號對照表 列印"
                   parent="base_data"
                   action="fish_print_action"
-                  sequence="4"/>
+                  sequence="5"/>
         <!--<menuitem id="monger_code_print"-->
                   <!--name="魚販代號對照表 列印"-->
                   <!--parent="fish_market_root"-->
@@ -103,27 +109,27 @@
                   name="傳票明細表"
                   parent="daily_debt"
                   action="fishmarket_undo_action"
-                  sequence="5"/>
+                  sequence="6"/>
         <menuitem id="monger_checkingorder_print"
                   name="魚販對帳單 列印"
                   parent="daily_debt"
                   action="fishmarket_undo_action"
-                  sequence="6"/>
+                  sequence="7"/>
         <menuitem id="monger_debt_counting"
                   name="魚販欠款資料 過帳"
                   parent="daily_debt"
-                  action="fishmarket_undo_action"
-                  sequence="7"/>
+                  action="monger_posting_wizard"
+                  sequence="8"/>
         <menuitem id="monger_arrearsbook_print"
                   name="魚販欠款簿 列印"
                   parent="daily_debt"
                   action="fishmarket_undo_action"
-                  sequence="8"/>
+                  sequence="9"/>
         <menuitem id="monger_history_searching_root" name="魚販舊帳查詢與列印" sequence="3"/>
         <menuitem id="old_search_print"
                   name="舊帳查詢與列印"
                   parent="monger_history_searching_root"
-                  action=""
+                  action="fishmarket_undo_action"
                   sequence="1"/>
         <menuitem id="monger_olddata_searching"
                   name="魚販舊帳資料查詢"
@@ -135,6 +141,10 @@
                   parent="old_search_print"
                   action="fishmarket_undo_action"
                   sequence="2"/>
-
+        <!--<menuitem id="odoo_customize"-->
+                  <!--name="Odoo Customize"-->
+                  <!--parent="old_search_print"-->
+                  <!--action="action_app_theme_config"-->
+                  <!--sequence="3"/>-->
     </data>
 </odoo>

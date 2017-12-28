@@ -19,7 +19,7 @@
             <field name="model">monger.debt</field>
             <field name="arch" type="xml">
                 <tree string="">
-                    <field name="code"/>
+                    <field name="debt_code"/>
                     <field name="name"/>
                     <field name="date"/>
                     <field name="debt_amount"/>
@@ -33,7 +33,7 @@
                 <form string="">
                     <sheet>
                         <group>
-                            <field name="code"/>
+                            <field name="debt_code"/>
                             <field name="name"/>
                             <field name="date"/>
                             <field name="debt_amount"/>

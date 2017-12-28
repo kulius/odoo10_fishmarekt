@@ -5,7 +5,7 @@
         <field name="name">傳票統計資料查詢</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">fish.coming</field>
-        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_mode">kanban,pivot,tree,form</field>
         <field name="view_ids" eval="[(5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('summoms_statisitc_tree')}),
             (0, 0, {'view_mode': 'form', 'view_id': ref('summoms_statisic_form')}),
@@ -59,6 +59,20 @@
                         </group>
                     </sheet>
                 </form>
+            </field>
+        </record>
+        <record id="summoms_statisic_graph" model="ir.ui.view">
+            <field name="name">傳票統計資料</field>
+            <field name="model">fish.coming</field>
+            <field name="arch" type="xml">
+                <pivot string="傳票統計">
+                    <field name="name" type="row"/>
+                    <field name="order" type="measure"/>
+                    <field name="weight_total" type="measure"/>
+                    <field name="buy_total" type="measure"/>
+                    <field name="sell_total" type="measure"/>
+                    <field name="surplus" type="measure"/>
+                </pivot>
             </field>
         </record>
         <record id="summoms_statistic_kanban_view" model="ir.ui.view">

@@ -30,11 +30,11 @@
             <field name="model">fishmarket.monger.sale</field>
             <field name="arch" type="xml">
                 <tree string="">
-                    <field name="write_date" string="交易日期"/>
+                    <field name="summoms_date"/>
                     <field name="now_status"/>
                     <field name="order"/>   <!--單號-->
                     <field name="fish_come"/>
-                    <field name="monger_name"/>
+                    <field name="name"/>
                     <field name="sell_weight"/>
                     <field name="sell_dollar"/>
                     <field name="sell_total"/>
@@ -51,11 +51,12 @@
                     </header>
                     <sheet>
                         <group col="4">
-                            <field name="order"/>
                             <field name="fish_come"/>
+                            <field name="summoms_date"/>
+                            <field name="order"/>
                         </group>
                         <group col="4">
-                            <field name="monger_name"/>
+                            <field name="name"/>
                             <field name="fish_name"/>
                         </group>
                         <group col="4">

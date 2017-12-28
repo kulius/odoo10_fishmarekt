@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <act_window id="monger_posting_wizard" name="魚販過帳作業" res_model="monger.posting.wizard"
+                    view_mode="form" target="new" multi="False" context = "{'default_set_the_price' : 0}"/>
+        <record id="monger_posting_form" model="ir.ui.view">
+            <field name="name">monger posting form</field>
+            <field name="model">monger.posting.wizard</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <h1><field name="posting_date"/></h1>
+                        <group>
+                            <span style="font-size:0.5cm;">過帳前</span>
+                            <span style="font-size:0.5cm;">過帳後</span>
+                        </group>
+                        <field name="set_the_price" invisible="1"/>
+                        <group>
+                            <group name="left">
+                                <field name="last_debt"/>
+                                <field name="income"/>
+                            </group>
+                            <group name="right">
+                                <field name="last_debt2"/>
+                                <field name="income1"/>
+                                <field name="sell_total"/>
+                            </group>
+                        </group>
+                            <group>
+                            <span>----------------------------------------------------------------------</span>
+                            <span>----------------------------------------------------------------------</span>
+                        </group>
+                        <group col="4">
+                            <field name="today_debt"/>
+                            <field name="posting_today_debt"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button type="object" name="create_debt" string="確認過帳" class="oe_highlight"/>
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

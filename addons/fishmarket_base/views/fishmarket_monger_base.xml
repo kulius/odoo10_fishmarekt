@@ -48,6 +48,7 @@
                             <field name="print1"/>
                             <!--<field name="monger_create"/>-->
                         </group>
+                         <field name="monger_summoms"/>
                     </sheet>
                 </form>
             </field>
