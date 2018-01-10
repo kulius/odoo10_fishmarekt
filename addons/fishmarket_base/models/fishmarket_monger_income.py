@@ -27,7 +27,7 @@ class MongerIncome(models.Model):
 
     @api.depends('monger_name')
     def set_date(self):
-        setting = self.env['fishmarket.set'].search([])
+        setting = self.env['app.theme.config.settings'].search([])
         for line in setting:
             self.income_date = line.working_date
 

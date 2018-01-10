@@ -6,3 +6,4 @@ from . import fishmarket_base
 from . import fishmarket_monger_income
 from . import fishmarket_monger_sale
 from . import fishmarket_set
+from . import customize_setting

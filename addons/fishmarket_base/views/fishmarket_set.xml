@@ -1,11 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="fishmarket_setting_action" model="ir.actions.act_window">
-            <field name="name">請先設置作業時間</field>
+
+        <!--##############tree form 設置作業時間 ##################-->
+
+
+        <!--<record id="fishmarket_setting_action" model="ir.actions.act_window">-->
+            <!--<field name="name">請先設置作業時間</field>-->
+            <!--<field name="type">ir.actions.act_window</field>-->
+            <!--<field name="res_model">fishmarket.set</field>-->
+            <!--<field name="view_mode">tree,form</field>-->
+            <!--<field name="help" type="html">-->
+              <!--<p class="oe_view_nocontent_create">-->
+                <!--&lt;!&ndash; Add Text Here &ndash;&gt;-->
+              <!--</p><p>-->
+                <!--&lt;!&ndash; More details about what a user can do with this object will be OK &ndash;&gt;-->
+              <!--</p>-->
+            <!--</field>-->
+        <!--</record>-->
+        <!--<record id="fishmarket_setting_tree" model="ir.ui.view">-->
+            <!--<field name="name">setting t</field>-->
+            <!--<field name="model">fishmarket.set</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<tree editable="top">-->
+                    <!--<field name="working_date"/>-->
+                <!--</tree>-->
+            <!--</field>-->
+        <!--</record>-->
+        <!--<record id="fishmarket_setting_form" model="ir.ui.view">-->
+            <!--<field name="name">setting f</field>-->
+            <!--<field name="model">fishmarket.set</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<form string="">-->
+                    <!--<sheet>-->
+                        <!--<group>-->
+                            <!--<field name="working_date"/>-->
+                        <!--</group>-->
+                    <!--</sheet>-->
+                <!--</form>-->
+            <!--</field>-->
+        <!--</record>-->
+
+
+         <!--
+
+         app_customize setting
+
+         -->
+
+        <record id="setting_action2" model="ir.actions.act_window">
+            <field name="name">設置作業時間</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">fishmarket.set</field>
-            <field name="view_mode">tree,form</field>
+            <field name="res_model">app.theme.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+                    <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('setting form')}),
+            ]"/>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
                 <!-- Add Text Here -->
@@ -14,23 +65,28 @@
               </p>
             </field>
         </record>
-        <record id="fishmarket_setting_tree" model="ir.ui.view">
-            <field name="name">setting t</field>
-            <field name="model">fishmarket.set</field>
-            <field name="arch" type="xml">
-                <tree editable="top">
-                    <field name="working_date"/>
-                </tree>
-            </field>
-        </record>
-        <record id="fishmarket_setting_form" model="ir.ui.view">
+        <record id="setting form" model="ir.ui.view">
             <field name="name">setting f</field>
-            <field name="model">fishmarket.set</field>
+            <field name="model">app.theme.config.settings</field>
             <field name="arch" type="xml">
                 <form string="">
+                    <header>
+                        <button string="確認設置系統時間" type="object" name="setting_date" class="oe_highlight"/>
+                        <!--<button string="Cancel" type="object" name="cancel" class="oe_link" special="cancel"/>-->
+                    </header>
                     <sheet>
+                        <!--<group>-->
+                            <!--<field name="now_date"/>-->
+                        <!--</group>-->
+                        <font color="red">
+                            <span style="font-size:0.5cm;">
+                                請先輸入作業時間
+                            </span>
+                        </font>
                         <group>
-                            <field name="working_date"/>
+                            <group>
+                                <field name="working_date"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>

@@ -14,7 +14,7 @@ class MongerDebt(models.Model):
 
     @api.depends('name')
     def set_date(self):
-        setting = self.env['fishmarket.set'].search([])
+        setting = self.env['app.theme.config.settings'].search([])
         for line in setting:
             self.date = line.working_date
 

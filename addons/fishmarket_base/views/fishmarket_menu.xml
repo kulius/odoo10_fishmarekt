@@ -37,7 +37,7 @@
         <menuitem id="setting"
                   name="設置"
                   parent="base_data"
-                  action="fishmarket_setting_action"
+                  action="setting_action2"
                   sequence="1"/>
         <menuitem id="fish_base"
                   name="魚名代號建檔 建檔"
