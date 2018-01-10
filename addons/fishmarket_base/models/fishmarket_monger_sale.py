@@ -5,7 +5,7 @@ class MongerSaleSummoms(models.Model):
     _name = 'fishmarket.monger.sale'
 
     order = fields.Char(string='件號' ,readonly=True)
-    summoms_date = fields.Date(string='傳票時間',compute='set_date')
+    summoms_date = fields.Date(string='傳票時間',compute='set_date',store=True)
     monger_id = fields.Char(string='魚販代號')
     name = fields.Many2one(comodel_name='fishmarket.monger',string='魚販名稱')
     now_status = fields.Selection([(1,'未過帳'),(2,'已過帳')], string='狀態',default=1,index=True)
@@ -33,8 +33,9 @@ class MongerSaleSummoms(models.Model):
     @api.depends('name')
     def set_date(self):
         setting = self.env['app.theme.config.settings'].search([])
-        for line in setting:
-            self.summoms_date = line.working_date
+        for row in self:
+            for line in setting:
+                row.summoms_date = line.working_date
 
     @api.model
     def create(self, vals):

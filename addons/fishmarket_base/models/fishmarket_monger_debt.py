@@ -6,7 +6,7 @@ class MongerDebt(models.Model):
 
     debt_code = fields.Char(string='代號',readonly=True)
     name = fields.Many2one(comodel_name='fishmarket.monger',string='魚販名稱')
-    date = fields.Date(string='欠款日期', readonly=True, compute='set_date' )
+    date = fields.Date(string='欠款日期', readonly=True, compute='set_date',store=True )
     debt_amount = fields.Integer(string='欠款金額' )
 
 
@@ -15,8 +15,9 @@ class MongerDebt(models.Model):
     @api.depends('name')
     def set_date(self):
         setting = self.env['app.theme.config.settings'].search([])
-        for line in setting:
-            self.date = line.working_date
+        for row in self:
+            for line in setting:
+                row.date = line.working_date
 
     @api.model
     def create(self, vals):

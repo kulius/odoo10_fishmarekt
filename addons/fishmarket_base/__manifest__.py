@@ -8,7 +8,6 @@
         魚市場基本資料
     """,
     'data': [
-        'views/test.xml',
         'views/fishmarket_set.xml',
         'views/fishmarket_monger_posting.xml',
         'views/fishmarket_monger_income_print.xml',

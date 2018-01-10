@@ -12,7 +12,7 @@ class MongerIncome(models.Model):
     last_owe_money = fields.Integer(string='前欠金額',readonly=True)
     record_money = fields.Integer(string='入金金額')
     total_owe_money = fields.Integer(string='欠餘金額?? 可以拔掉', compute='settotalowemoney', store=True)
-    income_date = fields.Date(string='入金時間', compute='set_date')
+    income_date = fields.Date(string='入金時間', compute='set_date',store=True)
     now_status = fields.Selection([(1, '未過帳'), (2, '已過帳')], string='狀態', default=1, index=True)
 
     # @api.depends('last_owe_money','record_money')
@@ -28,8 +28,9 @@ class MongerIncome(models.Model):
     @api.depends('monger_name')
     def set_date(self):
         setting = self.env['app.theme.config.settings'].search([])
-        for line in setting:
-            self.income_date = line.working_date
+        for row in self:
+            for line in setting:
+                row.income_date = line.working_date
 
 
 ##### 魚販入金的列印
